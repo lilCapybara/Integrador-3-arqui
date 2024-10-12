@@ -1,4 +1,7 @@
 package org.example.Repositories;
 
-public class CarreraRepository {
+import org.example.Entities.Carrera;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CarreraRepository extends JpaRepository<Carrera,Integer> {
 }
