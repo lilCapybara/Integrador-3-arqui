@@ -21,8 +21,14 @@ public class CarreraService {
         return carreraRepository.findAll();
     }
 
+    // g) Listar carreras por cantidad de inscriptos
     public List<Carrera> listarCarrerasPorInscriptos(){
         return carreraRepository.findCarrerasByCantidadInscriptos();
+    }
+
+    // h) Generar reporte
+    public List<Object[]> generarReporte(){
+        return carreraRepository.generarReporte();
     }
 }
 

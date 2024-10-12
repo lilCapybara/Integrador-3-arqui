@@ -27,10 +27,18 @@ public class CarreraController {
         return ResponseEntity.ok(carreras);
     }
 
+    // g) Listar carreras por cantidad de inscriptos
     @GetMapping("getCarrerasByInscriptos")
     public ResponseEntity<List<Carrera>> listarCarrerasPorInscriptos(){
         List<Carrera> carreras = carreraService.listarCarrerasPorInscriptos();
         return ResponseEntity.ok(carreras);
+    }
+
+    // g) Generar reporte
+    @GetMapping("/generarReporte")
+    public ResponseEntity<List<Object[]>> generarReporte(){
+        List<Object[]> reporte = carreraService.generarReporte();
+        return ResponseEntity.ok(reporte);
     }
 }
 
