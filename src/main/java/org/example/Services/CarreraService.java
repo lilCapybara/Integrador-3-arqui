@@ -21,6 +21,8 @@ public class CarreraService {
         return carreraRepository.findAll();
     }
 
-    // Puedes agregar métodos adicionales según las necesidades.
+    public List<Carrera> listarCarrerasPorInscriptos(){
+        return carreraRepository.findCarrerasByCantidadInscriptos();
+    }
 }
 

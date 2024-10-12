@@ -21,9 +21,15 @@ public class CarreraController {
         return ResponseEntity.ok(nuevaCarrera);
     }
 
-    @GetMapping("listarCarreras")
+    @GetMapping("/listarCarreras")
     public ResponseEntity<List<Carrera>> listarCarreras() {
         List<Carrera> carreras = carreraService.listarCarreras();
+        return ResponseEntity.ok(carreras);
+    }
+
+    @GetMapping("getCarrerasByInscriptos")
+    public ResponseEntity<List<Carrera>> listarCarrerasPorInscriptos(){
+        List<Carrera> carreras = carreraService.listarCarrerasPorInscriptos();
         return ResponseEntity.ok(carreras);
     }
 }
