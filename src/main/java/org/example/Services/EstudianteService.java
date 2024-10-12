@@ -48,4 +48,9 @@ public class EstudianteService {
     public List<Estudiante> obtenerPorGenero(String genero) {
         return estudianteRepository.findByGenero(genero);
     }
+
+    // g) Obtener estudiantes por carrera y ciudad
+    public List<Estudiante> obtenerPorCarreraYCiudad(String nombreCarrera, String ciudadResidencia){
+        return estudianteRepository.findByCarreraAndCiudad(nombreCarrera,ciudadResidencia);
+    }
 }

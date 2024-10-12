@@ -21,8 +21,7 @@ public class EstudianteController {
         return ResponseEntity.ok(nuevoEstudiante);
     }
 
-
-    // c) Recuperar todos los estudiantes con ordenamiento
+    // c) Recuperar todos los estudiantes por edad
     @GetMapping("/getEstudiantesByEdad")
     public List<Estudiante> listarEstudiantesOrdenadosPorEdad() {
         return estudianteService.obtenerEstudiantesOrdenadosPorEdad();
@@ -45,6 +44,13 @@ public class EstudianteController {
     @GetMapping("/getEstudiantesByGenero/{genero}")
     public ResponseEntity<List<Estudiante>> obtenerPorGenero(@PathVariable String genero) {
         List<Estudiante> estudiantes = estudianteService.obtenerPorGenero(genero);
+        return ResponseEntity.ok(estudiantes);
+    }
+
+    // g) Recuperar estudiantes por carrera y ciudad
+    @GetMapping("/getEstudiantesByCarreraAndCiudad/{nombreCarrera}/{ciudadResidencia}")
+    public ResponseEntity<List<Estudiante>> obtenerPorCarreraYCiudad(@PathVariable String nombreCarrera, @PathVariable String ciudadResidencia){
+        List<Estudiante> estudiantes = estudianteService.obtenerPorCarreraYCiudad(nombreCarrera,ciudadResidencia);
         return ResponseEntity.ok(estudiantes);
     }
 }
