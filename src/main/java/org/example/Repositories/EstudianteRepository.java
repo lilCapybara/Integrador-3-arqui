@@ -24,8 +24,9 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Integer>
     List<Estudiante> findByGenero(String genero);
 
     // g) Obtener estudiantes por carrera y ciudad
-    @Query("SELECT e FROM Estudiante e WHERE e.carrera.nombreCarrera = :nombreCarrera AND e.ciudadResidencia = :nombreCiudad")
+    @Query("SELECT i.estudiante FROM Inscripcion i WHERE i.carrera.nombreCarrera = :nombreCarrera AND i.estudiante.ciudadResidencia = :nombreCiudad")
     List<Estudiante> findByCarreraAndCiudad(@Param("nombreCarrera") String nombreCarrera, @Param("nombreCiudad") String nombreCiudad);
+
 
 
 }
