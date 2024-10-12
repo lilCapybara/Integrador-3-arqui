@@ -25,6 +25,10 @@ public class EstudianteService {
 
 
     // c) Obtener todos los estudiantes con ordenamiento
+    public List<Estudiante> obtenerEstudiantesOrdenadosPorEdad() {
+        return estudianteRepository.findAllByOrderByEdadAsc();
+    }
+
     public List<Estudiante> obtenerTodosEstudiantes(String ordenarPor) {
         if (ordenarPor.equals("nombre")) {
             return estudianteRepository.findAllByOrderByNombreAsc();

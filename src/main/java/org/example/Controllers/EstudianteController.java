@@ -23,6 +23,11 @@ public class EstudianteController {
 
 
     // c) Recuperar todos los estudiantes con ordenamiento
+    @GetMapping("/getEstudiantesByEdad")
+    public List<Estudiante> listarEstudiantesOrdenadosPorEdad() {
+        return estudianteService.obtenerEstudiantesOrdenadosPorEdad();
+    }
+
     @GetMapping("/listarEstudiantes")
     public ResponseEntity<List<Estudiante>> obtenerTodosEstudiantes(@RequestParam(defaultValue = "nombre") String ordenarPor) {
         List<Estudiante> estudiantes = estudianteService.obtenerTodosEstudiantes(ordenarPor);
