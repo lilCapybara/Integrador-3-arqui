@@ -18,12 +18,12 @@ public class Inscripcion {
 
     private Integer antiguedad;
 
-    private int anioInscripcion;
+    private Integer anioInscripcion;
     private Boolean graduado;
 
     public Inscripcion(){}
 
-    public Inscripcion(Estudiante estudiante, Carrera carrera, Integer antiguedad,int anioInscripcion, Boolean graduado) {
+    public Inscripcion(Estudiante estudiante, Carrera carrera, Integer antiguedad,Integer anioInscripcion, Boolean graduado) {
         this.estudiante = estudiante;
         this.carrera = carrera;
         this.antiguedad = antiguedad;
@@ -59,11 +59,11 @@ public class Inscripcion {
         this.antiguedad = antiguedad;
     }
 
-    public int getAnioInscripcion() {
+    public Integer getAnioInscripcion() {
         return anioInscripcion;
     }
 
-    public void setAnioInscripcion(int anioInscripcion) {
+    public void setAnioInscripcion(Integer anioInscripcion) {
         this.anioInscripcion = anioInscripcion;
     }
 

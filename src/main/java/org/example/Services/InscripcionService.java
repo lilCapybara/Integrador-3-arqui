@@ -1,8 +1,11 @@
 package org.example.Services;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.example.Entities.Carrera;
 import org.example.Entities.Estudiante;
 import org.example.Entities.Inscripcion;
+import org.example.Repositories.CarreraRepository;
+import org.example.Repositories.EstudianteRepository;
 import org.example.Repositories.InscripcionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +18,20 @@ public class InscripcionService {
 
     @Autowired
     private InscripcionRepository inscripcionRepository;
+    @Autowired
+    private EstudianteRepository estudianteRepository;
+    @Autowired
+    private CarreraRepository carreraRepository;
 
     @Transactional
-    public void matricularEstudiante(Estudiante estudiante, Carrera carrera, int antiguedad, int anioInscripcion) {
+    public void matricularEstudiante(Integer idEstudiante, Integer idCarrera, Integer antiguedad, Integer anioInscripcion) {
+        Estudiante estudiante = estudianteRepository.findById(idEstudiante).orElse(null);
+        Carrera carrera = carreraRepository.findById(idCarrera).orElse(null);
+
+        if (estudiante == null || carrera == null) {
+            throw new EntityNotFoundException("Estudiante o Carrera no encontrados");
+        }
+
         Inscripcion inscripcion = new Inscripcion();
         inscripcion.setEstudiante(estudiante);
         inscripcion.setCarrera(carrera);
