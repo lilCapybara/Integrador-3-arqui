@@ -31,7 +31,6 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Maria\",\r\n  \"apellido\": \"Curie\",\r\n  \"edad\": 30,\r\n  \"genero\": \"Femenino\",\r\n  \"documento\": 4353454,\r\n  \"ciudadResidencia\": \"Tandil\",\r\n  \"libretaUniversitaria\": 3443,\r\n  \"inscripciones\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -221,7 +220,6 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/estudiantes/getEstudiantesByCarreraAndCiudad/Física/Tandil",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -231,7 +229,6 @@
 								"api",
 								"estudiantes",
 								"getEstudiantesByCarreraAndCiudad",
-								"Física",
 								"Tandil"
 							]
 						}
@@ -250,7 +247,6 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idEstudiante\": 9,\r\n    \"idCarrera\": 4,\r\n    \"antiguedad\": 3,\r\n    \"anioInscripcion\": 2024\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
