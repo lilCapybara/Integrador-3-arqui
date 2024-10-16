@@ -5,6 +5,7 @@ import org.example.Entities.Carrera;
 import org.example.Entities.Estudiante;
 import org.example.Entities.Inscripcion;
 import org.example.Services.InscripcionService;
+import org.example.dto.InscripcionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,15 +39,11 @@ public class InscripcionController {
         }
     }
     @GetMapping("/inscripcionesXEstudiante/{idEstudiante}")
-    public ResponseEntity<List<Inscripcion>> listarIncripcionesPorEstudiante(@PathVariable Integer idEstudiante) {
-        List<Inscripcion> inscripciones = inscripcionService.listarIncripcionesPorEstudiante(idEstudiante);
+    public ResponseEntity<List<InscripcionDTO>> listarIncripcionesPorEstudiante(@PathVariable Integer idEstudiante) {
+        List<InscripcionDTO> inscripciones = inscripcionService.obtenerInscripcionesPorEstudiante(idEstudiante);
         return ResponseEntity.ok(inscripciones);
     }
 
-    @GetMapping("/inscriptosXCarrera/{idCarrera}")
-    public ResponseEntity<List<Inscripcion>> listarIncripcionesPorCarrera(@PathVariable Integer idCarrera) {
-        List<Inscripcion> inscripciones = inscripcionService.listarIncripcionesPorCarrera(idCarrera);
-        return ResponseEntity.ok(inscripciones);
-    }
+
 }
 

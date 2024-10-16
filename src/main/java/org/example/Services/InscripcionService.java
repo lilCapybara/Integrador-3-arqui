@@ -7,6 +7,7 @@ import org.example.Entities.Inscripcion;
 import org.example.Repositories.CarreraRepository;
 import org.example.Repositories.EstudianteRepository;
 import org.example.Repositories.InscripcionRepository;
+import org.example.dto.InscripcionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,11 +43,8 @@ public class InscripcionService {
         inscripcionRepository.save(inscripcion);
     }
 
-    public List<Inscripcion> listarIncripcionesPorEstudiante(Integer idEstudiante) {
-        return inscripcionRepository.findByEstudianteIdEstudiante(idEstudiante);
+    public List<InscripcionDTO> obtenerInscripcionesPorEstudiante(Integer idEstudiante) {
+        return inscripcionRepository.findInscripcionesByEstudianteId(idEstudiante);
     }
 
-    public List<Inscripcion> listarIncripcionesPorCarrera(Integer idCarrera) {
-        return inscripcionRepository.findByCarreraIdCarrera(idCarrera);
-    }
 }
