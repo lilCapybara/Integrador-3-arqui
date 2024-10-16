@@ -1,5 +1,6 @@
 package org.example.Controllers;
 
+import org.example.dto.EstudianteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,34 +24,34 @@ public class EstudianteController {
 
     // c) Recuperar todos los estudiantes por edad
     @GetMapping("/getEstudiantesByEdad")
-    public List<Estudiante> listarEstudiantesOrdenadosPorEdad() {
+    public List<EstudianteDTO> listarEstudiantesOrdenadosPorEdad() {
         return estudianteService.obtenerEstudiantesOrdenadosPorEdad();
     }
 
     @GetMapping("/listarEstudiantes")
-    public ResponseEntity<List<Estudiante>> obtenerTodosEstudiantes(@RequestParam(defaultValue = "nombre") String ordenarPor) {
-        List<Estudiante> estudiantes = estudianteService.obtenerTodosEstudiantes(ordenarPor);
+    public ResponseEntity<List<EstudianteDTO>> obtenerTodosEstudiantes(@RequestParam(defaultValue = "nombre") String ordenarPor) {
+        List<EstudianteDTO> estudiantes = estudianteService.obtenerTodosEstudiantes(ordenarPor);
         return ResponseEntity.ok(estudiantes);
     }
 
     // d) Recuperar un estudiante por libreta universitaria
     @GetMapping("/getEstudianteByLibreta/{libretaUniversitaria}")
-    public ResponseEntity<Estudiante> obtenerEstudiantePorLibreta(@PathVariable int libretaUniversitaria) {
-        Estudiante estudiante = estudianteService.obtenerPorLibreta(libretaUniversitaria);
+    public ResponseEntity<EstudianteDTO> obtenerEstudiantePorLibreta(@PathVariable int libretaUniversitaria) {
+        EstudianteDTO estudiante = estudianteService.obtenerPorLibreta(libretaUniversitaria);
         return ResponseEntity.ok(estudiante);
     }
 
     // e) Recuperar estudiantes por género
     @GetMapping("/getEstudiantesByGenero/{genero}")
-    public ResponseEntity<List<Estudiante>> obtenerPorGenero(@PathVariable String genero) {
-        List<Estudiante> estudiantes = estudianteService.obtenerPorGenero(genero);
+    public ResponseEntity<List<EstudianteDTO>> obtenerPorGenero(@PathVariable String genero) {
+        List<EstudianteDTO> estudiantes = estudianteService.obtenerPorGenero(genero);
         return ResponseEntity.ok(estudiantes);
     }
 
     // g) Recuperar estudiantes por carrera y ciudad
     @GetMapping("/getEstudiantesByCarreraAndCiudad/{nombreCarrera}/{ciudadResidencia}")
-    public ResponseEntity<List<Estudiante>> obtenerPorCarreraYCiudad(@PathVariable String nombreCarrera, @PathVariable String ciudadResidencia){
-        List<Estudiante> estudiantes = estudianteService.obtenerPorCarreraYCiudad(nombreCarrera,ciudadResidencia);
+    public ResponseEntity<List<EstudianteDTO>> obtenerPorCarreraYCiudad(@PathVariable String nombreCarrera, @PathVariable String ciudadResidencia){
+        List<EstudianteDTO> estudiantes = estudianteService.obtenerPorCarreraYCiudad(nombreCarrera,ciudadResidencia);
         return ResponseEntity.ok(estudiantes);
     }
 }

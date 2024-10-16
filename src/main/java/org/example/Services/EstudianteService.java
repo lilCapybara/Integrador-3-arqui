@@ -2,6 +2,7 @@ package org.example.Services;
 
 
 import org.example.Repositories.EstudianteRepository;
+import org.example.dto.EstudianteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,32 +26,30 @@ public class EstudianteService {
 
 
     // c) Obtener todos los estudiantes con ordenamiento
-    public List<Estudiante> obtenerEstudiantesOrdenadosPorEdad() {
+    public List<EstudianteDTO> obtenerEstudiantesOrdenadosPorEdad() {
         return estudianteRepository.findAllByOrderByEdadAsc();
     }
 
-    public List<Estudiante> obtenerTodosEstudiantes(String ordenarPor) {
+    public List<EstudianteDTO> obtenerTodosEstudiantes(String ordenarPor) {
         if (ordenarPor.equals("nombre")) {
             return estudianteRepository.findAllByOrderByNombreAsc();
-        } else if (ordenarPor.equals("edad")) {
-            return estudianteRepository.findAllByOrderByEdadAsc();
-        } else {
-            return estudianteRepository.findAll();
         }
+            return estudianteRepository.findAllByOrderByEdadAsc();
+
     }
 
     // d) Obtener estudiante por libreta universitaria
-    public Estudiante obtenerPorLibreta(int libretaUniversitaria) {
-        return estudianteRepository.findByLibretaUniversitaria(libretaUniversitaria);
+    public EstudianteDTO obtenerPorLibreta(int libretaUniversitaria) {
+        return estudianteRepository.findOneByLibretaUniversitaria(libretaUniversitaria);
     }
 
     // e) Obtener estudiantes por género
-    public List<Estudiante> obtenerPorGenero(String genero) {
+    public List<EstudianteDTO> obtenerPorGenero(String genero) {
         return estudianteRepository.findByGenero(genero);
     }
 
     // g) Obtener estudiantes por carrera y ciudad
-    public List<Estudiante> obtenerPorCarreraYCiudad(String nombreCarrera, String ciudadResidencia){
+    public List<EstudianteDTO> obtenerPorCarreraYCiudad(String nombreCarrera, String ciudadResidencia){
         return estudianteRepository.findByCarreraAndCiudad(nombreCarrera,ciudadResidencia);
     }
 }
