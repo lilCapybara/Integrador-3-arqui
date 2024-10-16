@@ -1,6 +1,7 @@
 package org.example.Repositories;
 
 import org.example.Entities.Carrera;
+import org.example.dto.CarreraDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -8,13 +9,17 @@ import java.util.List;
 
 public interface CarreraRepository extends JpaRepository<Carrera,Integer> {
 
+    @Query("SELECT new org.example.dto.CarreraDTO(c.idCarrera, c.nombreCarrera) FROM Carrera c")
+    List<CarreraDTO> findAllCarreras();
+
     // g) Listar carreras por cantidad de inscriptos
-    @Query("SELECT c.nombreCarrera, COUNT(i) AS inscriptos " +
+    @Query("SELECT new org.example.dto.CarreraDTO(c.idCarrera, c.nombreCarrera) " +
             "FROM Inscripcion i " +
             "JOIN i.carrera c " +
-            "GROUP BY c.nombreCarrera " +
+            "GROUP BY c.idCarrera, c.nombreCarrera " +
             "ORDER BY COUNT(i) DESC")
-    public List<Carrera> findCarrerasByCantidadInscriptos();
+    List<CarreraDTO> findCarrerasByCantidadInscriptos();
+
 
     // h)Generar reporte
     @Query( "SELECT c.nombreCarrera, i.anioInscripcion, e.nombre, e.apellido, " +

@@ -2,6 +2,7 @@ package org.example.Controllers;
 
 import org.example.Entities.Carrera;
 import org.example.Services.CarreraService;
+import org.example.dto.CarreraDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,15 +23,15 @@ public class CarreraController {
     }
 
     @GetMapping("/listarCarreras")
-    public ResponseEntity<List<Carrera>> listarCarreras() {
-        List<Carrera> carreras = carreraService.listarCarreras();
+    public ResponseEntity<List<CarreraDTO>> listarCarreras() {
+        List<CarreraDTO> carreras = carreraService.listarCarreras();
         return ResponseEntity.ok(carreras);
     }
 
     // g) Listar carreras por cantidad de inscriptos
     @GetMapping("getCarrerasByInscriptos")
-    public ResponseEntity<List<Carrera>> listarCarrerasPorInscriptos(){
-        List<Carrera> carreras = carreraService.listarCarrerasPorInscriptos();
+    public ResponseEntity<List<CarreraDTO>> listarCarrerasPorInscriptos(){
+        List<CarreraDTO> carreras = carreraService.listarCarrerasPorInscriptos();
         return ResponseEntity.ok(carreras);
     }
 
