@@ -22,11 +22,13 @@ public interface CarreraRepository extends JpaRepository<Carrera,Integer> {
 
 
     // h)Generar reporte
-    @Query( "SELECT c.nombreCarrera, i.anioInscripcion, e.nombre, e.apellido, " +
-            "CASE WHEN i.graduado = true THEN 'Graduado' ELSE 'No graduado' END AS estado " +
+    @Query("SELECT c.nombreCarrera, i.anioInscripcion, " +
+            "COUNT(i) AS cantidadInscriptos, " +
+            "SUM(CASE WHEN i.graduado = true THEN 1 ELSE 0 END) AS cantidadEgresados " +
             "FROM Inscripcion i " +
             "JOIN i.carrera c " +
-            "JOIN i.estudiante e " +
-            "ORDER BY c.nombreCarrera ASC, i.anioInscripcion ASC, e.apellido ASC, e.nombre ASC")
-    public List<Object[]>generarReporte();
+            "GROUP BY c.nombreCarrera, i.anioInscripcion " +
+            "ORDER BY c.nombreCarrera ASC, i.anioInscripcion ASC")
+    public List<Object[]> generarReporte();
+
 }
